@@ -142,6 +142,8 @@ public class FlutterSecureStorage {
 
             } catch (Exception e) {
                 Log.e(TAG, "StorageCipher initialization failed", e);
+                
+                throw e;
             }
         }
         if (getUseEncryptedSharedPreferences()) {
@@ -149,6 +151,8 @@ public class FlutterSecureStorage {
                 preferences = initializeEncryptedSharedPreferencesManager(applicationContext);
             } catch (Exception e) {
                 Log.e(TAG, "EncryptedSharedPreferences initialization failed", e);
+                
+                throw e;
             }
 
             checkAndMigrateToEncrypted(nonEncryptedPreferences, preferences);
